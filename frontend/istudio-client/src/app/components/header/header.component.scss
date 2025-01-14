@@ -1,0 +1,38 @@
+.container {
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    box-shadow: 0 0 5px #ddd;
+    border-bottom: 1px solid #ddd;
+    z-index: 1000;
+}
+
+.rt-menu, .lt-menu {
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.lt-menu {
+    justify-content: start;
+}
+
+.lt-menu h3 a {
+    color: #3f3844;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.rt-menu a {
+    color: #3f3844;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+}
