@@ -2,7 +2,7 @@
 .container {
   top: 8vh;
   position: relative;
-  width: 70%;
+  width: 80%;
   height: 100vh;
   margin: 20px auto;
   padding: 20px;
@@ -144,9 +144,14 @@
   flex-direction: column;
 }
 
+.stat span {
+  margin-bottom: 10px;
+}
+
 .form-batch {
   display: flex;
   align-items: center;
+  gap: 5px;
   justify-content: space-between;
 }
 
@@ -159,10 +164,53 @@
   margin-right: 5px;
 }
 
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #111;
+}
+
 .file-list {
   list-style: none;
-  padding: 0;
+  padding: 0 5px 0 5px;
   width: 20vw;
-  height: 30vh;
+  height: 40vh;
   overflow-y: scroll;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.details-form {
+  padding: 0.5rem 1rem;
+  width: 35vw;
+  height:40vh;
+  overflow-y: scroll;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.inputsize {
+  width: 20vw;
+}
+
+.row textarea {
+  height: 20vh;
+  resize: none  ;
+}
+
+.option {
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.odd-bg {
+  background-color: #d9d9d9;
+}
+
+.even-bg {
+  background-color: #fff;
 }

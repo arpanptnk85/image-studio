@@ -4,7 +4,7 @@ import { UploadComponent } from './components/upload/upload.component';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: 'upload', component: UploadComponent },
 ];
 
