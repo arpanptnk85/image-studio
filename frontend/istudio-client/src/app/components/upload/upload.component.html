@@ -1,24 +1,58 @@
-<div class="container"> 
-    <div class="card">
-        <div class="card-header">File/Folder Upload</div>
-        <div class="card-body">
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="fileInput" class="form-label">Choose files or a folder to upload:</label>
-                    <!-- Allows files -->
-                    <input type="file" class="form-control" id="fileInput" name="uploadedFile" accept=".zip,.png,.jpg" multiple>
-                    <small class="text-muted">You can upload multiple files, zip files, or specific formats.</small>
-                </div>
-                <div class="mb-3">
-                    <label for="folderInput" class="form-label">Upload an entire folder:</label>
-                    <!-- Allows folders -->
-                    <input type="file" class="form-control" id="folderInput" name="uploadedFolder" webkitdirectory>
-                </div>
-                <button type="submit" class="btn btn-primary">Upload</button>
-            </form>
+<div class="container">
+  <div class="card">
+    <div class="card-header">File/Folder Upload</div>
+    <div class="card-body">
+      <div class="upload-info">
+        <span>Supported formats .png, .jpg, .jpeg</span>
+      </div>
+      <div class="upload-form" *ngIf="!isStatsVisible">
+        <div class="lt-form">
+          <label for="fileInput" class="form-label">Select File(s) to Upload:</label>
+          <label for="folderInput" class="form-label">Select Folder to Upload:</label>
         </div>
-        <div class="card-footer"></div>
+        <div class="rt-form">
+          <input type="file" class="form-control" id="fileInput" name="uploadedFile" accept=".zip,.png,.jpg"
+            (change)="handleSelectedFiles($event)" multiple />
+          <input type="file" class="form-control" id="folderInput" name="uploadedFolder"
+            (change)="handleSelectedFiles($event)" webkitdirectory />
+        </div>
+      </div>
+      <div class="stats-form" *ngIf="isStatsVisible">
+        <div class="stat">
+          <div class="row">
+            <span class="stat-label">File Count:</span>
+            <span class="stat-value">{{ filesMetaData.fileCount }}</span>
+          </div>
+          <div class="row">
+            <span class="stat-label">Total Size:</span>
+            <span class="stat-value">{{ filesMetaData.totalSize }}</span>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-label">File Names:</span>
+          <ul class="file-list">
+            <li *ngFor="let item of filesMetaData.fileNames">{{ item }}</li>
+          </ul>
+        </div>
+        <div class="stat">
+          <div class="row form-batch">
+            <label for="batchName">Batch</label>
+            <input type="text" class="form-control" name="batchName" />
+          </div>
+          <div class="row form-batch">
+            <label for="batchID">Job ID</label>
+            <input type="text" class="form-control" name="batchID" />
+          </div>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button id="cancelButton" *ngIf="!isStatsVisible" class="btn btn-cancel">Cancel</button>
+        <button id="nextButton" *ngIf="!isStatsVisible" class="btn btn-primary" (click)="handleNext()">Next</button>
+        <button id="cancelButton" *ngIf="isStatsVisible" class="btn btn-cancel"
+          (click)="isStatsVisible=false">Back</button>
+        <button id="nextButton" *ngIf="isStatsVisible" class="btn btn-primary" (click)="uploadFiles()">Upload</button>
+      </div>
     </div>
+    <div class="card-footer"></div>
+  </div>
 </div>
-
-
