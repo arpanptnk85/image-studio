@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="card-dataset">
+        <div class="card-header">
+            <fa-icon [icon]="fasDatabase"></fa-icon>
+            <span>Datasets</span>
+        </div>
+        <div class="card-body">
+            <span class="label-text">
+                Select and Load
+            </span>
+            <hr>
+            <ul class="dataset-list">
+                <li *ngFor="let item of datasets;let i=index"
+                    [ngClass]="{ 
+                        'option': i >= 0, 
+                        'even-bg': i % 2 === 0, 
+                        'odd-bg': i % 2 !== 0,
+                        'selected': item.id === selectedDatasetID
+                     }"
+                    (click)="onDatasetClick(item.id)">
+                    {{ item.name }}
+                </li>
+            </ul>
+            <hr>
+            <button class="btn btn-primary load-dataset-btn" (click)="loadDataset()">
+                <fa-icon [icon]="fasAnglesRight"></fa-icon>
+            </button>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+    <div class="card-image-editor" *ngIf="selectedDataset">
+        <div class="card-header">
+            <fa-icon [icon]="fasDatabase"></fa-icon>
+            <span>Dataset
+                <fa-icon [icon]="fasAnglesRight"></fa-icon> {{ selectedDataset.name }}
+            </span>
+            
+        </div>
+        <div class="card-body">
+            <div class="label-text">
+                Pre-Process
+                <!-- <select name="preprocess-operations" class="operations-dropdown">
+                    <option value="annotate">Annotate</option>
+                    <option value="augment">Augment</option>
+                    <option value="opencv">OpenCV</option>
+                </select> -->
+            </div>
+            <hr>
+            <div class="canvas-container">
+                <canvas class="draw-board"></canvas>
+            </div>
+            <hr>
+            <div class="pagination-container">
+                <span class="pagination">
+                    <fa-icon [icon]="fasChevronLeft"></fa-icon>
+                </span>
+                <span class="pagination pagination-active">85</span>
+                <span class="pagination">
+                    <fa-icon [icon]="fasChevronRight"></fa-icon>
+                </span>
+            </div>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+</div>

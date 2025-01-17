@@ -5,8 +5,17 @@
         </h3>
     </div>
     <div class="rt-menu">
-        <a [routerLink]="['/']">Home</a>
-        <a [routerLink]="['/upload']">Upload</a>
-        <a [routerLink]="['/upload']">Preprocess</a>
+        <a class="link-item" [routerLink]="['/']">
+            <fa-icon [icon]="fasHomeAlt"></fa-icon>
+            <span>Home</span>
+        </a>
+        <a class="link-item" [routerLink]="['/upload']">
+            <fa-icon [icon]="fasUpload"></fa-icon>
+            <span>Upload</span>
+        </a>
+        <a class="link-item" [routerLink]="['/preprocess']">
+            <fa-icon [icon]="fasIndustry"></fa-icon>
+            <span>Preprocess</span>
+        </a>
     </div>
 </div>
