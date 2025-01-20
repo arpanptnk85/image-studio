@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IconsModule } from '../../modules/icons/icons.module';
-import { 
-  faAnglesRight, 
-  faDatabase, 
+import {
+  faAnglesRight,
+  faDatabase,
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
@@ -16,11 +22,12 @@ import {
   templateUrl: './preprocess.component.html',
   styleUrl: './preprocess.component.scss',
 })
-export class PreprocessComponent {
+export class PreprocessComponent implements OnInit {
   fasAnglesRight = faAnglesRight;
   fasDatabase = faDatabase;
   fasChevronLeft = faChevronLeft;
   fasChevronRight = faChevronRight;
+
   datasets: any[] = [
     { id: 1, name: 'train_batch01' },
     { id: 2, name: 'train_batch02' },
@@ -40,21 +47,67 @@ export class PreprocessComponent {
     { id: 16, name: 'train_batch16' },
   ];
 
+  dummyImages: any[] = [
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busA.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busB.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busC.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busA.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busB.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busC.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busA.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busB.jpg',
+    },
+    {
+      classes: 'NA',
+      src: '/assets/images/school_busC.jpg',
+    },
+  ]
+
   selectedDatasetID: number | null = null;
   selectedDataset: any | null = null;
+
+  ngOnInit(): void {
+    
+  }
 
   onDatasetClick(datasetID: number) {
     this.selectedDatasetID = datasetID;
   }
-  
-  loadDataset() {
+
+  loadDataset(): void {
     if (this.selectedDatasetID) {
-      const data = this.datasets.filter((item) => item.id === this.selectedDatasetID);
+      const data = this.datasets.filter(
+        (item) => item.id === this.selectedDatasetID
+      );
       try {
         this.selectedDataset = data[0];
-      } catch(err) {
+      } catch (err) {
         console.log(err);
       }
     }
   }
+
 }
